@@ -992,6 +992,7 @@ contexts:
     - include: fenced-lua
     - include: fenced-makefile
     - include: fenced-matlab
+    - include: fenced-mongodb
     - include: fenced-objc
     - include: fenced-objcpp
     - include: fenced-ocaml
@@ -1498,6 +1499,25 @@ contexts:
       escape: '{{fenced_code_block_escape}}'
       escape_captures:
         0: meta.code-fence.definition.end.matlab.markdown-gfm
+        1: punctuation.definition.raw.code-fence.end.markdown
+
+  fenced-mongodb:
+    - match: |-
+         (?x)
+          {{fenced_code_block_start}}
+          ((?i:mongodb))
+          {{fenced_code_block_trailing_infostring_characters}}
+      captures:
+        0: meta.code-fence.definition.begin.mongodb.markdown-gfm
+        2: punctuation.definition.raw.code-fence.begin.markdown
+        5: constant.other.language-name.markdown
+      embed: scope:source.mongodb.js
+      embed_scope:
+        markup.raw.code-fence.javascript.markdown-gfm
+        source.mongodb.js source.js
+      escape: '{{fenced_code_block_escape}}'
+      escape_captures:
+        0: meta.code-fence.definition.end.mongodb.markdown-gfm
         1: punctuation.definition.raw.code-fence.end.markdown
 
   fenced-objc:
